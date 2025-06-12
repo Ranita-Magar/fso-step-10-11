@@ -6,8 +6,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("dist"));
 app.use(morgan("tiny"));
-
+ 
 //defining a custom token for morgan to log the request body for post request
 morgan.token("req-body", (req) => {
   if (req.method === "POST") {
@@ -105,4 +106,3 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running in the port ${PORT}`);
 });
- 
